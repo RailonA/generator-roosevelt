@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 var os = require('os');
-exec = require('child_process').exec;
+const { exec } = require('child_process');
 
 // console.log(os.type()); // "Windows_NT"
 // console.log(os.release()); // "10.0.14393"
@@ -20,7 +20,7 @@ if(os.type()==="Linux"){
         }
         console.log(`stdout: ${stdout}`);
     });
-    
+
     // sudo apt-get install openssl;
     exec("sudo apt-get install openssl", (error, stdout, stderr) => {
         if (error) {
@@ -35,7 +35,7 @@ if(os.type()==="Linux"){
     });
 
     // echo 'export PATH="/usr/local/opt/openssl/bin:$PATH"' >> ~/.bash_profile;
-    exec("export PATH='/usr/local/opt/openssl/bin:$PATH' >> ~/bash_profile", (error, stdout, stderr) => {
+    exec("echo export PATH='/usr/local/opt/openssl/bin:$PATH' >> ~/bash_profile", (error, stdout, stderr) => {
         if (error) {
             console.log(`error: ${error.message}`);
             return;
@@ -63,7 +63,7 @@ if(os.type()==="Linux"){
     });
 
     // yes "" | openssl req -nodes -new -x509 -keyout server.key -out server.cert;
-    exec("openssl req -nodes -new -x509 -keyout server.key -out server.cert", {maxBuffer: 1024 * 500}, (error, stdout, stderr) => {
+    exec("yes '' | openssl req -nodes -new -x509 -keyout server.key -out server.cert", {maxBuffer: 1024 * 500}, (error, stdout, stderr) => {
             if (error) {
                 console.log(`error: ${error.message}`);
                 return;

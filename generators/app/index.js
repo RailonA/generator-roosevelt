@@ -7,7 +7,7 @@ const terminalLink = require('terminal-link')
 const selfsigned = require('selfsigned')
 const pems = selfsigned.generate(null, {
   keySize: 2048, // the size for the private key in bits (default: 1024)
-  days: 3652500, // how long till expiry of the signed certificate (default: 10,000)
+  days: 365000, // how long till expiry of the signed certificate (default: 10,000)
   algorithm: 'sha256', // sign the certificate with specified algorithm (default: 'sha1')
   extensions: [{ name: 'basicConstraints', cA: true }], // certificate extensions array
   pkcs7: true, // include PKCS#7 as part of the output (default: false)

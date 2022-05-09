@@ -447,8 +447,14 @@ module.exports = class extends Generator {
     const cert = pems.cert
     const key = pems.private
 
+
     this.fs.write(this.destinationPath('./certs/cert.pem'), cert)
     this.fs.write(this.destinationPath('./certs/key.pem'), key)
+
+    this.fs.copyTpl(
+      this.templatePath('../../../httpsSelfsigned.js'),
+      this.destinationPath('./certs/httpsSelfsigned.js'),
+    )
 
     this.registerTransformStream([
       jsonFilter,

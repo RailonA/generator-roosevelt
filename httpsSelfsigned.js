@@ -8,7 +8,7 @@ module.exports = function (appDir) {
     pkcs7: true, // include PKCS#7 as part of the output (default: false)
     clientCertificate: true, // generate client cert signed by the original key (default: false)
     clientCertificateCN: 'unkown' // client certificate's common name (default: 'John Doe jdoe123')
-  });
+  })
 
   const fs = require('fs')
   const key = pems.private
@@ -32,6 +32,5 @@ module.exports = function (appDir) {
       }
       // file written successfully
     })
-
   } catch {}
 }
